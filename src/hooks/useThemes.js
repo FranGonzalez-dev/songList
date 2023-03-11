@@ -15,6 +15,7 @@ export const useThemes = () => {
     const toggleMode = () => {
         const newMode = !isDarkMode ? 'dark' : 'light'
         setIsDarkMode( !isDarkMode );
+        localStorage.setItem('theme', newMode)
         document.body.classList.remove(isDarkMode ? "dark-theme" : "water-theme");
         document.body.classList.add(newMode === "dark" ? "dark-theme" : "water-theme");
     }
