@@ -1,0 +1,41 @@
+.water-theme {
+    background-color: #f6f6f6;
+    
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+.dark-theme {
+background-color: #202b38;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container {
+    
+    min-height: 100vh;
+    padding: 1rem;
+}
+h1 {
+    text-align: center;
+}
+
+.form {
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form--input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
