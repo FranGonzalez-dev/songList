@@ -8,8 +8,15 @@ function App() {
     }
     return (
     <>
-        <h1>Ensayos App</h1>
-        <button onClick={toggleMode}>ToggleMode</button>
+        <nav>
+
+            <h3>App</h3>
+            <label className="switch">
+                <input type="checkbox" onClick={toggleMode} checked={!isDarkMode}/>
+            <span className="slider"/>
+        </label>
+        </nav>
+        {/* <button onClick={toggleMode}>ToggleMode</button> */}
         <link
             rel="stylesheet"
             href={`https://cdn.jsdelivr.net/npm/water.css@2/out/${ isDarkMode ? "dark" : "light"}.css`}
@@ -23,6 +30,36 @@ function App() {
                 <i class="ri-add-line"></i>
             </button>
         </form>
+
+        <main className="main">
+            <h2>Para ensayar | Ensayadas</h2>
+            <div className="song--container">
+                <div className="song">
+                    <div className="song--info">
+                        <p>Canción 1</p>
+                        <a href="#">Link</a>
+                    </div>
+                    <input type="checkbox"/>
+                </div>
+                <div className="song">
+                    <div className="song--info">
+                        <p>Canción 2</p>
+                        <a href="#">Link</a>
+                    </div>
+                    <input type="checkbox"/>
+                </div>
+                <div className="song">
+                    <div className="song--info">
+                        <p>Canción 3</p>
+                        <a href="#">Link</a>
+                    </div>
+                    <input type="checkbox"/>
+                </div>
+            </div>
+        </main>
+        
+        
+
     </> 
     )
 }
