@@ -2,43 +2,57 @@
     --background: #161F27;
 }
 [ theme="light" ]{
-    
     --background: #EFEFEF;
 }
 
 
-
-.water-theme {
-    background-color: #f6f6f6;
-    
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-.dark-theme {
-background-color: #202b38;
-transition: background-color 0.3s ease, color 0.3s ease;
+html {
+    padding: 0 .5rem;
+    font-size: 62.5%;
 }
-
+body {
+    font-size: 1.6rem;
+}
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.container {
-    
-    min-height: 100vh;
-    padding: 1rem;
+
+.profile__icon {
+    background-color: #0c151c;
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 
-.form {
 
+.water-theme {
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+.dark-theme {
+    background-color: #202b38;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+
+
+
+.form {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
     width: 100%;
+    margin-bottom: 30px;
 }
 
 .form--input {
@@ -46,9 +60,22 @@ transition: background-color 0.3s ease, color 0.3s ease;
     flex-direction: column;
     width: 100%;
 }
+.form button {
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 140px;
+    
+}
 
+.input--checked {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-nav {
+header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -62,9 +89,7 @@ h1, h2, h3, h4, h5, h6, input, button {
 }
 
 
-.main {
-    margin-top: 30px;
-}
+
 .main h2 {
     font-size: 18px;
 }
@@ -77,8 +102,9 @@ h1, h2, h3, h4, h5, h6, input, button {
     flex-direction: column;
     gap: 10px;
 }
+
 .song {
-    padding: .5rem;
+    padding: 1rem;
     border-radius: 6px;
     background-color: var(--background);
     display: flex;
@@ -86,6 +112,67 @@ h1, h2, h3, h4, h5, h6, input, button {
     justify-content: space-between;
     align-items: center;
 }
+
+
+
+
+.nav__container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+a { text-decoration: none!important; }
+
+.nav__link {
+    position: relative;
+    color: unset;
+    opacity: 50%;
+    transition: .2s opacity ease-in-out;
+}
+
+.nav__link:hover {
+    opacity: 100%;
+}
+.nav__link:hover::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+}
+.nav__link--active {
+    opacity: 100%;
+    position: relative;
+}
+.nav__link--active::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
