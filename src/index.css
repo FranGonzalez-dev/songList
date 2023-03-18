@@ -32,13 +32,23 @@ body {
 
 .water-theme {
     background-color: #fff;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all .2s ease-in-out, color 0.3s ease;
 }
   
 .dark-theme {
     background-color: #202b38;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all .2s ease-in-out, color 0.3s ease;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -82,25 +92,30 @@ header {
     align-items: center;
     padding-bottom: 30px;
 }
+.header__brand {
+    color: currentColor;
+    font-weight: 600;
+    font-size: 2rem;
 
+}
 
-h1, h2, h3, h4, h5, h6, input, button {
+h1, h2, h3, h4, h5, h6, input, button, i {
     margin: 0!important;
 }
 
-
+.main {
+    min-height: 50vh;
+}
 
 .main h2 {
     font-size: 18px;
 }
 .song--container {
     margin-top: 10px ;
-    
-    
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 10px;    
 }
 
 .song {
@@ -112,6 +127,41 @@ h1, h2, h3, h4, h5, h6, input, button {
     justify-content: space-between;
     align-items: center;
 }
+
+.song--buttons {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 70px;
+    position: relative;
+}
+.song--buttons::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: currentColor;
+    left: 50%;
+}
+.song--buttons i {
+    font-size: 2rem;
+    transition: .2s ease-in-out all;
+    cursor: pointer;
+}
+.song--buttons i:hover {
+    color: red;
+    filter: drop-shadow( 0 0 8px red);
+}
+
+.song--buttons i:active {
+    transform: translateY(5px);
+}
+
+
+
+
+
 
 
 
@@ -166,11 +216,27 @@ a { text-decoration: none!important; }
 
 
 
+/*****     Loader      *****/
+.loader--container {
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader--container i {
+    font-size: 4rem;
+    animation: rotation .8s infinite linear;
+}
 
-
-
-
-
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
 
 
 
@@ -184,11 +250,11 @@ a { text-decoration: none!important; }
 
 /* The switch - the box around the slider */
 .switch {
-    font-size: 17px;
+    
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 28px;
 }
   
   /* Hide default HTML checkbox */
@@ -200,7 +266,6 @@ a { text-decoration: none!important; }
   
   /* The slider */
   .slider {
-    --background: #0c151c;
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -216,11 +281,11 @@ a { text-decoration: none!important; }
   .slider:before {
     position: absolute;
     content: "";
-    height: 1.4em;
-    width: 1.4em;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    left: 10%;
-    bottom: 15%;
+    left: 4px;
+    bottom: 4px;
     box-shadow: inset 8px -4px 0px 0px #fff;
     background: var(--background);
     transition: .5s;

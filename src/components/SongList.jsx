@@ -1,19 +1,34 @@
+import { Loader, Animated, SongItem } from '../components';
+import { useLocation } from "react-router-dom";
+import { useSongs } from "../hooks";
 
 
-export const SongList = ( { data } ) => {
+
+
+
+export const SongList = ( ) => {
+    
+    let location = useLocation();
+    
+    const { songs, isLoading, handleDelete, isDeleting } = useSongs({ location });
+    
+    
+
+
     return (
-        <div className="song--container"> 
+
+        isLoading ? <Loader/>
+        : songs.length > 0 ?
+        <Animated userClass="song--container">
             {
-                data.map( (item, id) => (
-                    <div className="song" key={id}>
-                        <div className="song--info">
-                            <p>{item.title}</p>
-                            <a href={item.link}>Link</a>
-                        </div>
-                        <input type="checkbox" checked={item.completed}/>
-                    </div>
+                songs.map( song => (
+                    <SongItem key={ song.id } {...song} handleDelete={handleDelete} isDeleting={ isDeleting }/>
                 ))
             }       
-        </div>
+        </Animated>
+        : 
+        <Animated>
+            <p>Aún no hay canciones</p>
+        </Animated>
     )
 }
