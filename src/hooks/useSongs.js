@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { query, where, onSnapshot, deleteDoc, doc } from "firebase/firestore";
-import { collectionRef, db } from '../services'
+import { query, where, onSnapshot, deleteDoc, doc, addDoc } from "firebase/firestore";
+import { collectionRef } from '../services'
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,7 +12,7 @@ export function useSongs ({ location }) {
     const [ isLoading , setIsLoading ] = useState( true );
 
 
-    const songsQuery = location.pathname === '/ensayadas'
+    const songsQuery = location.pathname === '/home/rehearsed'
         ? query( collectionRef, where( 'rehearsed', '==', true ))
         : query( collectionRef, where( 'rehearsed', '==', false ))
 
@@ -26,13 +26,30 @@ export function useSongs ({ location }) {
         return unsubscribe;
     }, [ location ]);
     
-
-    const [ isDeleting, setIsDeleting ] = useState( false );
+    const handleAddSong = async ({ dataForm, checked }) => {
+        const song = {
+            title: dataForm.title,
+            url: dataForm.url,
+            lyrics: dataForm.lyrics,
+            rehearsed: checked
+        }
+        try {
+            await toast.promise(
+                addDoc( collectionRef, song ), {
+                    pending: 'Añadiendo canción...',
+                    success: 'Canción añadida con éxito!',
+                    error: 'Se produjo un erro al agregar la canción.'
+                }
+            )
+        } catch ( error ) {
+            toast.error('Se produjo un error al agregar la canción')
+            console.log( error );
+        }
+    }
 
     const handleDelete = async ( id ) => {
-        setIsDeleting( true )
         try {
-            const ref = doc( db, 'canciones', id );
+            const ref = doc( collectionRef, id );
             await toast.promise(
                 deleteDoc( ref ), {
                     pending: 'Eliminando canción...',
@@ -47,17 +64,9 @@ export function useSongs ({ location }) {
         }
     }
 
-
-
-    const [checked, setChecked] = useState();
-    
-    const handleChecked = () => {
-        setChecked(!checked)
-        console.log(checked);
-    }
     
     return {
-        songs, isLoading, handleDelete, handleChecked, checked, isDeleting
+        songs, isLoading, handleDelete, handleAddSong
     }
 }
 

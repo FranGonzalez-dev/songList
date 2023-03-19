@@ -2,7 +2,7 @@ import { useState } from "react"
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../services";
 
-export const SongItem = ({ title, url, rehearsed, handleDelete, id }) => {
+export const SongItem = ({ title, url, lyrics, rehearsed, handleDelete, id }) => {
     
     const [ isChecked, setIsChecked ] = useState( rehearsed );
 
@@ -15,8 +15,12 @@ export const SongItem = ({ title, url, rehearsed, handleDelete, id }) => {
     return (
         <article className='song animate__animated animate__fadeInUp'>
             <div className="song--info">
-                <p>{ title }</p>
-                <a href={ url }>Link</a>
+                <h3 className="song__title">{ title }</h3>
+                <div className="song__links">
+                    <a href={ url } target='_blank'>Escuchar canción</a>
+                    <span></span>
+                    <a href={ lyrics } target='_blank'>Ver letra</a>
+                </div>
             </div>
             <div className="song--buttons">
                 <input type="checkbox" checked={ isChecked } onChange={ handleToggle }/>

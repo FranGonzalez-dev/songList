@@ -10,7 +10,7 @@ export const SongList = ( ) => {
     
     let location = useLocation();
     
-    const { songs, isLoading, handleDelete, isDeleting } = useSongs({ location });
+    const { songs, isLoading, handleDelete } = useSongs({ location });
     
     
 
@@ -20,11 +20,9 @@ export const SongList = ( ) => {
         isLoading ? <Loader/>
         : songs.length > 0 ?
         <Animated userClass="song--container">
-            {
-                songs.map( song => (
-                    <SongItem key={ song.id } {...song} handleDelete={handleDelete} isDeleting={ isDeleting }/>
-                ))
-            }       
+        { songs.map( song => (
+            <SongItem key={ song.id } { ...song } handleDelete={ handleDelete } />
+        ))}
         </Animated>
         : 
         <Animated>

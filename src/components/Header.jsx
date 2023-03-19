@@ -10,7 +10,7 @@ export const Header = () => {
     return (
         <>  
             <header>
-                <Link to='/' className="header__brand">
+                <Link to='/home/to-rehearse' className="header__brand">
                     Dabar
                 </Link>
                 <label className="switch">

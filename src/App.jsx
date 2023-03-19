@@ -1,6 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Header, SongList, Nav } from "./components";
+
 import { ToastContainer } from "react-toastify";
+
+
+import { Login, Home, Admin } from "./screens";
+
 
 
 
@@ -10,14 +14,14 @@ import { ToastContainer } from "react-toastify";
 function App() {
     return (
         <Router>
-            <Header />
-            <main className="main">
-                <Nav />
+            
+            
                 <Routes>
-                    <Route path="/" element={<SongList/>}/>
-                    <Route exact path="/ensayadas" element={<SongList />}/>
+                    <Route exact path="/" element={ <Login/> }/>
+                    <Route path="/login" element={ <Admin/> }/>
+                    <Route path="/home/*" element={ <Home/> }/>
                 </Routes>
-            </main>
+            
 
             <ToastContainer/>
         </Router>
