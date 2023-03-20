@@ -1,18 +1,22 @@
-import { Nav, Header, SongList } from "../../components"
-import { Route, Routes } from "react-router-dom"
+import { Form, Nav, Header, SongList } from "../../components"
+import { useAppContext } from "../../context"
 
 
 export function Home () {
+    const { user } = useAppContext();
+    
     return (
         <div className="animate__animated animate__fadeIn home">
             <Header />
+
+            {
+                user.isLoggedIn ? <Form/>
+                : null
+            }
+            
+
+            <h1 className="title">Lista de canciones</h1>
             <Nav/>
-
-            <Routes>
-                <Route exact path="/home/to-rehearse" element={<SongList/>}/>
-                <Route path="/home/rehearsed" element={<SongList/>}/>
-            </Routes>
-
             <SongList/>
         </div>
     )

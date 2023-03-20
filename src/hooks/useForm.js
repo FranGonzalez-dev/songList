@@ -1,8 +1,16 @@
 import { useState } from "react"
 
+import { addDoc } from "firebase/firestore";
+import { collectionRef } from '../services'
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 export function useForm ({ initialState }) {
 
-    const [ dataForm, setDataForm ] = useState(initialState);
+    const [ dataForm, setDataForm ] = useState( initialState );
     const [ errorMessage, setErrorMessage ] = useState( null );
     const [ checked, setChecked ] = useState( false );
 
@@ -40,17 +48,38 @@ export function useForm ({ initialState }) {
     const handleChecked = () => {
         setChecked( !checked )
     }
-    
-    const handleSubmitForm = ( e ) => {
+ 
+    const addSong = async ({ dataForm, checked }) => {
+        const song = {
+            title: dataForm.title,
+            url: dataForm.url,
+            lyrics: dataForm.lyrics,
+            rehearsed: checked
+        }
+        try {
+            await toast.promise(
+                addDoc( collectionRef, song ), {
+                    pending: 'Añadiendo canción...',
+                    success: 'Canción añadida con éxito!',
+                    error: 'Se produjo un error al añadir la canción.'
+                }
+            )
+        } catch ( error ) {
+            console.log(error)
+            toast.error('Se produjo un error al añadir la canción.')
+        }
+    }
+
+    const handleSubmitForm = async ( e ) => {
         e.preventDefault();
         if( !dataForm.title || !dataForm.url || !dataForm.lyrics ){
             return setErrorMessage('Por favor, rellena todos los campos')
         }
-
+        await addSong({ dataForm, checked })
         setDataForm( initialState )
     }
 
     return {
-        handleChange, formLayout, dataForm, errorMessage, setDataForm, handleChecked, checked
+        handleChange, formLayout, dataForm, errorMessage, setDataForm, handleChecked, checked, handleSubmitForm
     }
 }

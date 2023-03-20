@@ -1,42 +1,18 @@
-import { useState } from 'react'
-import { useSongs, useForm } from '../hooks';
-import { useLocation } from 'react-router-dom';
-
-
+import {  useForm } from '../hooks';
 
 export const Form = () => {
 
-    let location = useLocation()
-
-    const { handleAddSong } = useSongs({ location });
-
+   
     const initialState = {
         title: '',
         url: '',
         lyrics: ''
     }
 
-    const [errorMessage, setErrorMessage] = useState(null);
-
-
-
-
-    const { handleChange, dataForm, setDataForm, formLayout, checked, handleChecked } = useForm({ initialState });
-    
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if ( !dataForm.title || !dataForm.url || !dataForm.lyrics ) {
-            return setErrorMessage('Por favor, rellena todos los campos campos.')
-        }
-       
-        await handleAddSong( { dataForm, checked } )
-        setDataForm( initialState )
-    }
-
+    const { handleChange, formLayout, checked, handleChecked, handleSubmitForm, errorMessage } = useForm({ initialState });
 
     return (
-        <form className='form' onSubmit={ handleSubmit }>
+        <form className='form' onSubmit={ handleSubmitForm }>
             <h2>Nueva canción</h2>
             { formLayout.map(( item, id ) => (
                 <div className="form--input"  key={ id }>
