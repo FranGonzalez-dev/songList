@@ -13,7 +13,7 @@ export const Header = () => {
             <header>
                 
                 <Link to='/' className="header__brand">
-                    Dabar Music
+                    Dabar
                 </Link>
 
 
