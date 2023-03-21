@@ -1,4 +1,4 @@
-import { Form, Nav, Header, SongList } from "../../components"
+import { Form, Nav, SongList } from "../../components"
 import { useAppContext } from "../../context"
 
 
@@ -7,7 +7,7 @@ export function Home () {
     
     return (
         <div className="animate__animated animate__fadeIn home">
-            <Header />
+            
 
             {
                 user.isLoggedIn ? <Form/>

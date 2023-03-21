@@ -1,5 +1,5 @@
 import { useThemes } from "../hooks"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAppContext } from "../context";
 
 
@@ -7,6 +7,8 @@ export const Header = () => {
 
     const { toggleMode, isDarkMode } = useThemes();
     const { user, removeUser  } = useAppContext();
+
+    let location = useLocation();
 
     return (
         <>  
@@ -18,9 +20,18 @@ export const Header = () => {
 
 
                 <div className="header__main">
-                    <Link className="link-to-login" to='/login' onClick={ removeUser }>
-                        { user.isLoggedIn ? 'Cerrar Sesión' : 'Acceder'}
-                    </Link>
+
+                    {
+                        location.pathname !== '/login' ?
+                        <Link className="link-to-login" to='/login' onClick={ removeUser }>
+                            { user.isLoggedIn ? 'Cerrar Sesión' : 'Acceder'}
+                        </Link>
+                        : null
+                    }
+                    
+
+
+
                     <label className="switch">
                         <input type="checkbox" onChange={toggleMode} checked={!isDarkMode}/>
                         <span className="slider"/>
