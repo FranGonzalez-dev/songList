@@ -26,7 +26,7 @@ export function DarkModeButton () {
         <div className="flex items-center text-xl cursor-pointer dark:text-gray-100 text-blue-500">
         <input type="checkbox" name="" id="" className='hidden'/>
 
-            <i onClick={toggleDarkMode} className={`${ darkMode ? "ri-sun-fill" : "ri-moon-fill" } transition ease-in-out duration-300 hover:-rotate-45`}  />
+            <i onClick={toggleDarkMode} className={`${ darkMode ? "ri-sun-fill" : "ri-moon-fill" } transition ease-in-out duration-300 md:hover:-rotate-45`}  />
         
         </div>   
     )
