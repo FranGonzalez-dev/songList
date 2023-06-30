@@ -21,7 +21,9 @@ export function useSongs ({ location }) {
     useEffect(() => {
         setIsLoading( true );
         const unsubscribe = onSnapshot( songsQuery, ( snapshot ) => {
-            const data = snapshot.docs.map(( doc ) => ({ id: doc.id, ...doc.data()}))
+            const data = snapshot.docs
+                .map(( doc ) => ({ id: doc.id, ...doc.data()}))
+                
             setSongs( data );
             setIsLoading( false )
         })

@@ -10,7 +10,7 @@ export function SongItem ( song ) {
                 song.createdAt?.toDate() > new Date(now.getTime() - 7200000) && 
                 <Ping />
             }
-            <h3 className="capitalize text-gray-900 dark:text-gray-200">{ song.title }</h3>
+            <h3 className="text-gray-900 dark:text-gray-200">{ song.title }</h3>
         </Link>
     )
 }

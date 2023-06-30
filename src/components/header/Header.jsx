@@ -25,7 +25,7 @@ export function Header () {
                     {
                         location.pathname !== '/login' ?
                             <Button 
-                                text={ user.isLoggedIn ? 'Log Out' : 'Log In' }
+                                text={ user.isLoggedIn ? 'Salir' : 'Admin' }
                                 bg='bg-blue-500' 
                                 hoverBg = 'hover:bg-blue-600'
                                 icon= { user.isLoggedIn ? 'logout-box-line' : 'login-box-line' }

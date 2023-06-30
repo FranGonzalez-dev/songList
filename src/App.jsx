@@ -1,7 +1,7 @@
 import { ToastContainer } from 'react-toastify';
 import { Header, Footer } from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home, Login, NewSong, SongDetails } from './screens';
+import { Concert, Home, Login, NewSong, SongDetails } from './screens';
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
                     <Routes>
                         <Route exact path='/' element={ <Home/> }/>
                         <Route path='/rehearsed' element={ <Home/> }/>
+                        <Route path='/marcela-gandara' element={<Concert/>}/>
                         <Route path='/login' element={ <Login/> }/>
                         <Route path='/add' element={ <NewSong/> }/>
                         <Route path='/song/:id' element={ <SongDetails/> }/>
